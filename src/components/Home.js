@@ -9,7 +9,7 @@ import { Box } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import User from "./User";
 import IconButton from "@material-ui/core/IconButton";
-import DeleteIcon from '@material-ui/icons/Delete';
+import DeleteIcon from "@material-ui/icons/Delete";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -46,7 +46,7 @@ export default function Home() {
     console.log(id);
     let tempData = data.filter((el) => el.id !== id);
     setData(tempData);
-  }
+  };
 
   return (
     <div className="root">
@@ -66,7 +66,10 @@ export default function Home() {
                     <AccountBoxIcon />
                   </ListItemIcon>
                   <ListItemText primary={user.login} />
-                  <IconButton aria-label="delete" onClick={(event) => handleDelete(event, user.id)}>
+                  <IconButton
+                    aria-label="delete"
+                    onClick={(event) => handleDelete(event, user.id)}
+                  >
                     <DeleteIcon />
                   </IconButton>
                 </ListItem>
