@@ -7,6 +7,7 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -30,6 +31,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignIn() {
   const classes = useStyles();
+  const history = useHistory();
 
   return (
     <Container component="main" maxWidth="xs">
@@ -51,6 +53,7 @@ export default function SignIn() {
             label="Email Address"
             name="email"
             autoComplete="email"
+            defaultValue="something@email.com"
             autoFocus
           />
           <TextField
@@ -63,6 +66,7 @@ export default function SignIn() {
             type="password"
             id="password"
             autoComplete="current-password"
+            defaultValue="password"
           />
           <Button
             type="submit"
@@ -70,6 +74,7 @@ export default function SignIn() {
             variant="contained"
             color="primary"
             className={classes.submit}
+            onClick={() => history.push("/home")}
           >
             Sign In
           </Button>

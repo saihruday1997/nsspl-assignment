@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import "./Home.css";
 
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
@@ -28,9 +27,16 @@ export default function Home() {
   useEffect(() => {
     let url = "https://api.github.com/users";
     fetch(url).then((res) => {
-      res.json().then((result) => {
-        setData(result);
-      });
+      res
+        .json()
+        .then((result) => {
+          setData(result);
+          localStorage.setItem("users", JSON.stringify(result));
+        })
+        .catch((err) => {
+          let collection = localStorage.getItem("users");
+          setData(JSON.parse(collection));
+        });
     });
   }, []);
 
